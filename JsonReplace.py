@@ -16,12 +16,9 @@ class JsonReplace:
             self.homepath = os.path.dirname(__file__)
 
         config_path = os.path.join(self.homepath, 'Setting.conf')
-        """self.homepath = os.path.dirname(os.path.abspath(__file__)) # 获取当前文件所在的目录"""
 
         # 读取Setting.conf文件参数
-        """self.config.read(self.homepath + '\\Setting.conf', encoding='utf-8')"""
         self.config.read(config_path, encoding='utf-8')
-        """self.path = self.config['INFO']['path']"""
         self.path_key = self.config['INFO']['path_key']
         self.date = self.config['INFO']['date_key'].split(',')
         self.symbol_para = self.config['INFO']['symbol_para']
@@ -54,7 +51,6 @@ if __name__ == "__main__":
         sys.exit(0)
 
     try:
-        """files = os.listdir(JsonReplace().path)"""
         for root, path, files in os.walk(file_path):
             for file in files:
                 files_list.append(root + '\\' + file)
@@ -68,7 +64,6 @@ if __name__ == "__main__":
 
     # Json文件字段替换
     for file in files_Modified:
-        """filepath = JsonReplace().path + '\\' + str(file)"""
         print("------------------------------------------\n" + file)
         logging.debug('>>>' + file + '<<<')
         try:
@@ -82,7 +77,6 @@ if __name__ == "__main__":
     a = input(">>>是否需要打开对应的文件夹 y/n<<<\n")
     if a == 'y':
         print(file_path)
-        """os.system("start explorer " + file_path)"""
         os.system("explorer.exe %s" % file_path)
     if a == 'n':
         sys.exit(0)
